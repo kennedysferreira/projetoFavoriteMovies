@@ -1,11 +1,9 @@
-import { CreateMovie } from "./pages/CreateMovie"
-import { Home } from "./pages/Home"
-
+import { CreateMovie } from "./pages/CreateMovie";
+import { Home } from "./pages/Home";
+import { MoviePreview } from "./pages/MoviePreview";
 
 function App() {
-  return (
-    <CreateMovie/>
-  )
+  return <MoviePreview />;
 }
 
-export default App
+export default App;
