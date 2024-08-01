@@ -4,7 +4,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const Input = ({
-  icon: Icon,
+  icon: Icon, 
   className,
   ...props
 }: InputProps & { icon?: React.ComponentType<any> }) => {

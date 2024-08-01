@@ -16,7 +16,7 @@ export const CreateMovie = () => {
         icon={MdArrowBack}
         name={"Voltar"}
       ></ButtonText>
-      <Main className="space-y-10 px-1">
+      <Main className="overflow-y-scroll space-y-10 px-1">
         <h1 className="text-3xl text-white font-bold">Novo Título</h1>
         <div className="flex gap-10">
           <Input placeholder="Título"></Input>

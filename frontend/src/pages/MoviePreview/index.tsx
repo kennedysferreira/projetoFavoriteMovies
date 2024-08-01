@@ -19,25 +19,25 @@ export const MoviePreview = () => {
         icon={MdArrowBack}
         name={"Voltar"}
       ></ButtonText>
-      <Main className="space-y-10">
+      <Main className="overflow-y-scroll space-y-10">
         <div className="flex gap-4 items-center">
           <h1 className="text-3xl text-white font-bold">Interstellar</h1>
           <div className="flex">
-            <MdStar className="text-pink-500"></MdStar>
-            <MdStar className="text-pink-500"></MdStar>
-            <MdStar className="text-pink-500"></MdStar>
-            <MdStar className="text-pink-500"></MdStar>
-            <MdStarBorder className="text-pink-500"></MdStarBorder>
+            <MdStar className="text-rose-500"></MdStar>
+            <MdStar className="text-rose-500"></MdStar>
+            <MdStar className="text-rose-500"></MdStar>
+            <MdStar className="text-rose-500"></MdStar>
+            <MdStarBorder className="text-rose-500"></MdStarBorder>
           </div>
         </div>
-        <div className="flex items-center gap-4 text-sm text-white ">
+        <div className="flex items-center gap-2 text-sm text-white ">
           <img
             className="w-3 h-3 rounded-full"
             src="https://github.com/kennedysferreira.png"
             alt="profile"
           />
           <span>Por Kennedy Ferreira</span>
-          <MdAccessTime className="text-pink-400" />
+          <MdAccessTime className="text-rose-400" />
           <data> 01/01/2024 às 08:00 </data>
         </div>
         <div className="flex gap-4  text-white">

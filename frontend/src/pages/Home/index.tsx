@@ -19,15 +19,15 @@ export const Home = () => {
           <span>Adicionar filme</span>
         </Button>
       </div>
-      <Main className="space-y-4">
+      <Main className="overflow-y-scroll space-y-4">
         <div className="flex flex-col gap-2 bg-zinc-800 rounded-lg w-full p-6">
           <h1 className="text-2xl text-white">Interestellar</h1>
           <div className="flex gap-2 text-xs items-center">
-            <MdStar className="text-pink-500"></MdStar>
-            <MdStar className="text-pink-500"></MdStar>
-            <MdStar className="text-pink-500"></MdStar>
-            <MdStar className="text-pink-500"></MdStar>
-            <MdStarBorder className="text-pink-500"></MdStarBorder>
+            <MdStar className="text-rose-500"></MdStar>
+            <MdStar className="text-rose-500"></MdStar>
+            <MdStar className="text-rose-500"></MdStar>
+            <MdStar className="text-rose-500"></MdStar>
+            <MdStarBorder className="text-rose-500"></MdStarBorder>
           </div>
           <div className="max-h-12 overflow-hidden">
             <p className="text-stone-400">

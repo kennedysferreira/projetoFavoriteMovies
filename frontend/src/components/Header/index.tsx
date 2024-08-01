@@ -5,7 +5,7 @@ import { CiSearch } from "react-icons/ci";
 export const Header = () => {
   return (
     <header className="w-full py-6 px-28 flex justify-between gap-16 items-center bg-zinc-900 border-b-[1px] border-b-zinc-600">
-      <h1 className="text-2xl font-bold text-pink-400">FavoriteMovies</h1>
+      <h1 className="text-2xl font-bold text-rose-400">FavoriteMovies</h1>
       <Input placeholder="Pesquisar pelo título" icon={CiSearch} type="text" />
       <a href="/" className="flex items-center gap-4">
         <div className="flex flex-col items-end gap-1">
