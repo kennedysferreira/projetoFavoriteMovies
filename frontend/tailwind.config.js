@@ -6,6 +6,7 @@ export default {
       fontFamily: {
         sans: ["Roboto Slab", "sans-serif"],
       },
+      
     },
   },
   plugins: [require("tailwind-scrollbar")],
