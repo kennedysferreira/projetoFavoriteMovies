@@ -1,12 +1,12 @@
 export const SignPage = ({ children }: { children: React.ReactNode }) => {
   return (
     <body className="w-full h-screen flex ">
-      <aside className="w-1/3 bg-zinc-900 flex justify-center items-center mt-[-6rem] ">
+      <aside className="w-1/3 bg-zinc-900 flex justify-center items-center mt-[-4rem] ">
         <div className="space-y-12">
-          <div className="text-center">
+          <div>
             <h1 className="text-5xl font-bold text-rose-400">FavoriteMovies</h1>
             <p className="text-sm text-stone-300 ">
-              Aplicação para acompanhar tudo que assistir.
+              Application to keep track of everything you watch.
             </p>
           </div>
           {children}

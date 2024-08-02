@@ -10,17 +10,20 @@ import { Page } from "../../components/Page";
 import { Main } from "../../components/Main";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button/Button";
+import { Link } from "react-router-dom";
 
 export const Profile = () => {
   return (
     <Page>
       <div>
         <div className="h-36 bg-zinc-800 flex items-center">
-          <ButtonText
-            className="px-36"
-            icon={MdArrowBack}
-            name={"Voltar"}
-          ></ButtonText>
+        <Link to={"/"}>
+        <ButtonText
+          className="px-36"
+          icon={MdArrowBack}
+          name={"Back"}
+        ></ButtonText>
+      </Link>
         </div>
       </div>
       <div className="w-48 h-48 flex justify-center m-auto my-4 items-center mt-[-96px] relative">
@@ -45,10 +48,10 @@ export const Profile = () => {
             <Input placeholder="E-mail" icon={MdOutlineMailOutline}></Input>
           </div>
           <div className="space-y-2">
-            <Input placeholder="Senha atual" icon={MdOutlineLock}></Input>
-            <Input placeholder="Nova senha" icon={MdOutlineLock}></Input>
+            <Input placeholder="Password" icon={MdOutlineLock}></Input>
+            <Input placeholder="New password" icon={MdOutlineLock}></Input>
           </div>
-          <Button className="w-full">Salvar</Button>
+          <Button className="w-full">Save</Button>
         </form>
       </Main>
     </Page>

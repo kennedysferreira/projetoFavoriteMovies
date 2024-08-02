@@ -1,3 +1,5 @@
+
+
 interface ButtonTextProps {
   className?: string;
   name: string;
@@ -9,7 +11,7 @@ export const ButtonText = ({
   name,
   icon: Icon,
 }: ButtonTextProps & { icon?: React.ComponentType<any> }) => {
-const styles = `flex gap-2 items-center text-sm text-rose-400 ${className}`
+const styles = `flex gap-2 items-center text-sm text-rose-400 hover:brightness-90 ${className}`
 
   return (
     <button className={styles}>
