@@ -4,17 +4,32 @@ import { SignPage } from "../../components/SignPage"
 import { Button } from "../../components/Button/Button"
 import { ButtonText } from "../../components/ButtonText"
 import { Link } from "react-router-dom"
+import { useAuth } from "../../hook/auth"
+import { useState } from "react"
 
 export const SignIn = () => {
+  const {singIn} = useAuth()
+
+
+  const [email, setEmail] = useState({} as any)
+  const [password, setPassword] = useState({} as any)
+
+  const handleLogin = async (e: any) => {
+    e.preventDefault()
+    console.log(email, password);
+    
+    await singIn({email, password})
+  }
+
   return (
     <SignPage>
       <h2 className="text-2xl font-bold text-rose-100">Log-in</h2>
       <div className="space-y-6">
         <form action="#" className="space-y-2">
-        <Input icon={MdOutlineMailOutline} placeholder="E-mail"></Input>
-        <Input icon={MdOutlineLock}  placeholder="Password"></Input>
+        <Input onChange={(e) => setEmail(e.target.value)} icon={MdOutlineMailOutline} placeholder="E-mail"></Input>
+        <Input onChange={(e) => setPassword(e.target.value)} type="password" icon={MdOutlineLock}  placeholder="Password"></Input>
       </form>
-      <Button className="w-full">Enter</Button>
+      <Button className="w-full" onClick={handleLogin}>Enter</Button>
       </div>
       <div className="flex justify-center items-center">
 
