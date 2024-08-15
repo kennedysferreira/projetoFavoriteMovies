@@ -11,11 +11,12 @@ class UserController {
   }
 
   async update(req, res) {
-    const { id } = req.params;
+    const user_id = req.user.id;
+    
     const { name, email, password, oldPassword } = req.body;
 
     try {
-      const user = await knex("users").where({ id }).first();
+      const user = await knex("users").where({ id: user_id }).first();
 
       if (!user) {
         return res.status(404).send({ message: "User not found" });
@@ -35,7 +36,7 @@ class UserController {
         updateData.password = hashedPassword;
       }
 
-      await knex("users").where({ id }).update(updateData);
+      await knex("users").where({ id: user_id }).update(updateData);
 
       res.send({ message: "User updated successfully" });
     } catch (error) {
@@ -45,10 +46,12 @@ class UserController {
   }
 
   async delete(req, res) {
-    const { id } = req.params;
-    await knex("users").where({ id }).del();
+    const user_id = req.user.id;
+    await knex("users").where({ id: user_id }).del();
     res.send("User deleted successfully");
   }
 }
 
 module.exports = UserController;
+
+

@@ -1,14 +1,15 @@
 const knex = require("../database/knex");
 
 class TagsController {
-  async create(req, res) {
-    const { name } = req.body;
-    const {note_id} = req.query;
-    const { user_id } = req.query;
+  async index(req, res) {
+    const user_id = req.user.id;
+    const tags = await knex("tags")
+      .where({ user_id })
+      .groupBy("name")
+      .select("*");
 
-    await knex("tags").insert({ name, note_id, user_id });
-    return res.json({ message: "Tag created" });
-  }
+    return res.json(tags);
+}
 }
 
 module.exports = TagsController;
