@@ -35,8 +35,7 @@ class NotesController {
   }
 
   async index(req, res) {
-    const { title, tags } = req.query;
-    const user_id = req.user.id;
+    const { title, tags, user_id } = req.query;
 
     let notes;
 
@@ -52,16 +51,18 @@ class NotesController {
         .orderBy("notes.title");
     } else {
       notes = await knex("notes")
-        .where({ user_id })
+        .where({user_id})
         .whereLike("title", `%${title}%`)
         .orderBy("title");
     }
+   
 
     const userTags = await knex("tags").where({ user_id });
     const notesWithTags = notes.map((note) => {
       const noteTags = userTags.filter((tag) => tag.note_id === note.id);
       return { ...note, tags: noteTags };
-    });
+    }); 
+  
 
     return res.json(notesWithTags);
   }

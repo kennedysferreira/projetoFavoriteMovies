@@ -14,7 +14,7 @@ class UserController {
     const user_id = req.user.id;
     
     const { name, email, password, oldPassword } = req.body;
-
+ 
     try {
       const user = await knex("users").where({ id: user_id }).first();
 

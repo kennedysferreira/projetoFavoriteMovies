@@ -22,7 +22,7 @@ function AuthProvider({ children }: any) {
       setData({ user, token });
     } catch (error: any) {
       toast.error("Incorrect email or password");
-     
+
       return;
     }
   }
@@ -43,9 +43,12 @@ function AuthProvider({ children }: any) {
         const { data } = await api.patch("/users/avatar", fileUploadForm);
         user.avatar = data.avatar;
       }
+
       await api.put("/users", user);
       localStorage.setItem("@favoriteMovies:user", JSON.stringify(user));
       setData({ user: data.user, token: data.token });
+      console.log(data);
+      
       toast.success("Profile updated");
     } catch (error) {
       console.log(error);
@@ -64,7 +67,9 @@ function AuthProvider({ children }: any) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user: data.user, signIn, signOut, updateProfile }}>
+    <AuthContext.Provider
+      value={{ user: data.user, signIn, signOut, updateProfile }}
+    >
       {children}
     </AuthContext.Provider>
   );

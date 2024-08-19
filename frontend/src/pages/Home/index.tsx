@@ -5,8 +5,24 @@ import { Main } from "../../components/Main";
 import { MdStarBorder, MdStar, MdAddCircleOutline } from "react-icons/md";
 import { Tag } from "../../components/Tags";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { api } from "../../services/api";
 
 export const Home = () => {
+  const [movies, setMovies] = useState([]);
+  const [tags, setTags] = useState([]);
+  const [search, setSearch] = useState("");
+
+  function getMovies() {
+    api.get('/notes')
+    .then(response => {
+      setMovies(response.data);
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  }
+
   return (
     <Page>
       <Header></Header>
