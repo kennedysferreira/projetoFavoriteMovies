@@ -20,9 +20,9 @@ function AuthProvider({ children }: any) {
       localStorage.setItem("@favoriteMovies:token", token);
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
       setData({ user, token });
-    } catch (error) {
-      console.log(error);
-      toast.error("User or password invalid");
+    } catch (error: any) {
+      toast.error("Incorrect email or password");
+     
       return;
     }
   }
@@ -41,7 +41,7 @@ function AuthProvider({ children }: any) {
         fileUploadForm.append("avatar", avatarFile);
 
         const { data } = await api.patch("/users/avatar", fileUploadForm);
-        user.avatar = data.avatar;  	
+        user.avatar = data.avatar;
       }
       await api.put("/users", user);
       localStorage.setItem("@favoriteMovies:user", JSON.stringify(user));
@@ -64,19 +64,15 @@ function AuthProvider({ children }: any) {
   }, []);
 
   return (
-    <AuthContext.Provider
-      value={{ ...data, signIn, signOut, updateProfile }}
-    >
+    <AuthContext.Provider value={{ user: data.user, signIn, signOut, updateProfile }}>
       {children}
     </AuthContext.Provider>
   );
-
 }
 
 function useAuth() {
   const context = useContext(AuthContext);
   return context;
 }
-
 
 export { AuthProvider, useAuth };

@@ -1,5 +1,5 @@
 const { verify } = require("jsonwebtoken");
-const { AppError } = require("../utils/appError");
+const  AppError  = require("../utils/appError");
 const authConfig = require("../configs/auth");
 
 function ensureAuth(req, res, next) {
@@ -11,9 +11,9 @@ function ensureAuth(req, res, next) {
   const [, token] = authHeader.split(" ");
 
   if (!token) {
-    throw AppError("Invalid JWT token", 401);
+    throw AppError("Invalid JWT token", 401); 
   }
-
+ 
   try {
     const { sub: user_id } = verify(token, authConfig.jwt.secret);
     req.user = { id: Number(user_id) };

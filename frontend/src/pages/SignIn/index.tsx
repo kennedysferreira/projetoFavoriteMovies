@@ -8,17 +8,16 @@ import { useAuth } from "../../hook/auth"
 import { useState } from "react"
 
 export const SignIn = () => {
-  const {singIn} = useAuth()
-
+  const {signIn} = useAuth()
 
   const [email, setEmail] = useState({} as any)
   const [password, setPassword] = useState({} as any)
 
-  const handleLogin = async (e: any) => {
-    e.preventDefault()
-    console.log(email, password);
+  const handleLogin = (e: any) => {
     
-    await singIn({email, password})
+    e.preventDefault()
+        
+    return signIn({email, password})
   }
 
   return (
