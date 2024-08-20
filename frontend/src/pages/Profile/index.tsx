@@ -13,7 +13,8 @@ import { Button } from "../../components/Button/Button";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hook/auth";
 import { useEffect, useState } from "react";
-
+import { api } from "../../services/api";
+import avatarProfile from "../../assets/avatarProfile.svg";
 
 export const Profile = () => {
   const { user, updateProfile } = useAuth();
@@ -24,9 +25,9 @@ export const Profile = () => {
 
   const avatarUrl = user.avatar
     ? `${api.defaults.baseURL}/files/${user.avatar}`
-    : null;
-  const [avatar, setAvatar] = useState(null);
-  const [avatarFile, setAvatarFile] = useState("");
+    : avatarProfile;
+  const [avatar, setAvatar] = useState(avatarUrl);
+  const [avatarFile, setAvatarFile] = useState(null);
 
   async function handleUpdateProfile(e: any) {
     e.preventDefault();
@@ -36,8 +37,17 @@ export const Profile = () => {
       password: newPassword,
       oldPassword: confirmPassword,
     };
-    const avatarFile = "";
+
     await updateProfile({ user, avatarFile });
+  }
+
+  function setAvatarUrl(e: any) {
+    const file = e.target.files[0];
+
+    setAvatarFile(file);
+
+    const imageUrl = URL.createObjectURL(file);
+    setAvatar(imageUrl);
   }
 
   return (
@@ -53,15 +63,20 @@ export const Profile = () => {
           </Link>
         </div>
       </div>
-      <div className="w-48 h-48 flex justify-center m-auto my-4 items-center mt-[-96px] relative">
-        <img className="rounded-full" src={avatar} alt="kennedy ferreira" />
+      <div className="flex aspect-square justify-center m-auto my-4 items-center mt-[-96px] relative">
+        <img className="rounded-full w-48 h-48 object-cover" src={avatar} alt="kennedy ferreira" />
 
         <label
           className="cursor-pointer w-12 h-12 text-xl bg-rose-400 rounded-full absolute flex justify-center items-center right-2 bottom-2"
           htmlFor="avatar"
         >
           <MdOutlinePhotoCamera />
-          <input className="hidden" id="avatar" type="file" />
+          <input
+            className="hidden"
+            id="avatar"
+            type="file"
+            onChange={setAvatarUrl}
+          />
         </label>
       </div>
       <Main>

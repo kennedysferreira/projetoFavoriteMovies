@@ -1,14 +1,22 @@
 import { Link } from "react-router-dom";
 import { Input } from "../Input";
 import { CiSearch } from "react-icons/ci";
+import { useAuth } from "../../hook/auth";
+import { api } from "../../services/api";
+import avatarProfile from "../../assets/avatarProfile.svg";
 
 export const Header = () => {
+  const { user } = useAuth();
   function handleLogout(e: any) {
     e.preventDefault();
     localStorage.removeItem("@favoriteMovies:user");
     localStorage.removeItem("@favoriteMovies:token");
     window.location.reload();
   }
+
+  const avatarUrl = user.avatar
+    ? `${api.defaults.baseURL}/files/${user.avatar}`
+    : avatarProfile;
   return (
     <header className="w-full py-6 px-28 flex justify-between gap-16 items-center bg-zinc-900 border-b-[1px] border-b-zinc-600">
       <h1 className="text-2xl font-bold text-rose-400">FavoriteMovies</h1>
@@ -24,8 +32,8 @@ export const Header = () => {
           </button>
         </div>
         <img
-          className="w-16 h-16 rounded-full"
-          src="https://github.com/kennedysferreira.png"
+          className="w-16 h-16 rounded-full object-cover"
+          src={avatarUrl}
           alt="profile"
         />
       </Link>

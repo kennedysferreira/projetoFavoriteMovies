@@ -7,8 +7,10 @@ import { Tag } from "../../components/Tags";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { api } from "../../services/api";
+import { useAuth } from "../../hook/auth";
 
 export const Home = () => {
+  const { user } = useAuth();
   const [movies, setMovies] = useState([]);
   const [tags, setTags] = useState([]);
   const [search, setSearch] = useState("");
