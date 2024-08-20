@@ -26,7 +26,8 @@ class NotesController {
   async show(req, res) {
     const { id } = req.params;
     const note = await knex("notes").where({ id }).first();
-    res.json(note);
+    const tags = await knex("tags").where({ note_id: id }).orderBy("name");
+    res.json({note, tags});
   }
   async delete(req, res) {
     const { id } = req.params;

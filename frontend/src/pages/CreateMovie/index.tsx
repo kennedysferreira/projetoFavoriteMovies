@@ -47,7 +47,7 @@ export const CreateMovie = () => {
 
   return (
     <Page>
-      <Header />
+      <Header setSearch={() => navigate(-1)} />
       <Link to={"/"}>
         <ButtonText
           className="mt-8 px-36"

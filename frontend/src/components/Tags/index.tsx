@@ -11,7 +11,7 @@ export const Tag = ({
   name,
   isCreate,
   icon: Icon,
-  onChange,
+  onChange, 
   onAdd,
   onRemove
 }: TagProps & { icon?: React.ComponentType<any> }) => {
@@ -25,7 +25,7 @@ export const Tag = ({
             readOnly
             className="bg-transparent focus:outline-none cursor-default"
             placeholder={name}
-          ></input>{" "}
+          ></input>
           <button onClick={onRemove}>{Icon && <Icon className="size-5" />}</button>
         </div>
       ) : (
@@ -34,7 +34,7 @@ export const Tag = ({
                      hover:border-rose-600 focus-within:border-solid transition-colors duration-300 ease-linear"
         >
           <input
-            onChange={(e) =>onChange && onChange(e.target.value)}
+            onChange={(e) => onChange && onChange(e.target.value)}
             className="bg-transparent focus:outline-none"
             placeholder={name}
           ></input>{" "}
