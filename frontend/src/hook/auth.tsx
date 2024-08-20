@@ -34,21 +34,21 @@ function AuthProvider({ children }: any) {
     setData({} as any);
   }
 
-  async function updateProfile({ user, avatarFile }: any) {
+  async function updateProfile({ userUpdated, avatarFile }: any) {
     try {
       if (avatarFile) {
         const fileUploadForm = new FormData();
         fileUploadForm.append("avatar", avatarFile);
 
         const { data } = await api.patch("/users", fileUploadForm);
-        user.avatar = data.avatar;
+        userUpdated.avatar = data.avatar;
+          
       }
 
-      await api.put("/users", user);
-      localStorage.setItem("@favoriteMovies:user", JSON.stringify(user));
+      await api.put("/users", userUpdated);
+      localStorage.setItem("@favoriteMovies:user", JSON.stringify(userUpdated));
       setData({ user: data.user, token: data.token });
-      console.log(data);
-      
+
       toast.success("Profile updated");
     } catch (error) {
       console.log(error);

@@ -12,7 +12,7 @@ import { Input } from "../../components/Input";
 import { Button } from "../../components/Button/Button";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hook/auth";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { api } from "../../services/api";
 import avatarProfile from "../../assets/avatarProfile.svg";
 
@@ -31,14 +31,16 @@ export const Profile = () => {
 
   async function handleUpdateProfile(e: any) {
     e.preventDefault();
-    const user = {
+    const updated = {
       name,
       email,
       password: newPassword,
       oldPassword: confirmPassword,
     };
 
-    await updateProfile({ user, avatarFile });
+    const userUpdated = Object.assign(user, updated);
+
+    await updateProfile({ userUpdated, avatarFile });
   }
 
   function setAvatarUrl(e: any) {
@@ -64,7 +66,11 @@ export const Profile = () => {
         </div>
       </div>
       <div className="flex aspect-square justify-center m-auto my-4 items-center mt-[-96px] relative">
-        <img className="rounded-full w-48 h-48 object-cover" src={avatar} alt="kennedy ferreira" />
+        <img
+          className="rounded-full w-48 h-48 object-cover"
+          src={avatar}
+          alt="kennedy ferreira"
+        />
 
         <label
           className="cursor-pointer w-12 h-12 text-xl bg-rose-400 rounded-full absolute flex justify-center items-center right-2 bottom-2"
